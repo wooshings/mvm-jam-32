@@ -1,0 +1,36 @@
+=== simple jumps ===
+
+y'' = g - y' * g / vmax
+y'(0) = v
+y(t) = c * exp(-(g/vmax)*t) * vmax/g + t*vmax + c2 ## per WolframAlpha
+y'(t) = -c * exp(-(g/vmax)*t) + vmax
+y'(0) = v = -c + vmax = v
+c = vmax - v
+y(0) = 0 = (vmax - v) * vmax/g + c2
+c2 = (v-vmax)*vmax/g
+
+y'(t) = 0 = (v-vmax) * exp(-(g/vmax)*t) + vmax
+t = vmax * ln (1 - v/vmax) / g ## per WolfraphAlpha
+y = (vmax-v) * exp(-ln(1-v/vmax)) * vmax/g + vmax^2/g*ln(1-v/vmax) + (v-vmax)*vmax/g
+  = (vmax-v) / (1-v/vmax) * vmax/g + vmax^2/g * ln(1-v/vmax) + (v-vmax)*vmax/g
+  = vmax^2/g + vmax^2/g * ln(1-v/vmax) + v*vmax/g - vmax^2/g
+  = vmax/g * (vmax * ln(1-v/vmax) + v)
+note v and y are both negative
+
+per WolframAlpha,
+v = vmax * (W(-exp(-y*g/vmax^2-1))+1), where W is the Lambert W / product log function
+however, this is incorrect for whatever reason. Newton's Method it is!
+
+=== physics step ===
+y'' = a - b*y'
+y'(0) = v
+y(0) = 0
+y(t) = at/b + c/b*e^-bt + c2 ## per WolframAlpha
+y'(t) = a/b - c*e^-bt
+c = a/b-v
+c2 = -c/b
+
+=== boosted jumps ===
+not even gonna try for an analytic solution on this one rn
+-- TODO
+
